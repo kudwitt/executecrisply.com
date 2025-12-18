@@ -5,65 +5,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Execute Crisply</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; color: #333; background: #fff; }
-        header { text-align: center; padding: 50px 20px; background: #f8f8f8; }
-        .logo { display: inline-block; }
-        .logo span { display: block; font-size: 3em; line-height: 1; font-weight: bold; text-transform: uppercase; }
-        .tagline { font-size: 1.5em; margin-top: 20px; }
-        section { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        h2 { border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin-bottom: 10px; }
-        form { max-width: 600px; margin: 0 auto; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; }
-        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; }
-        button { background: #333; color: #fff; padding: 10px 20px; border: none; cursor: pointer; }
-        footer { text-align: center; padding: 20px; background: #f8f8f8; font-size: 0.8em; }
+        /* BASE STYLES - LIGHT MODE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+       
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #4b5563;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        /* TOP LABEL */
+        .brand-label {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+        /* THE BLOCK LOGO */
+        .logo-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .letter-box {
+            background-color: #9ca3af;
+            color: white;
+            width: 60px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            border-radius: 2px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+        /* TAGLINES */
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4b5563;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+        .tagline {
+            font-family: "Georgia", "Times New Roman", serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #6b7280;
+            margin-bottom: 50px;
+        }
+        /* INQUIRY FORM */
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            margin-bottom: 50px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #f9fafb;
+            color: #374151;
+            transition: all 0.2s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #9ca3af;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #6b7280;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background-color: #4b5563;
+        }
+        /* CONTENT SECTIONS */
+        .content-section {
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        .content-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .content-section li {
+            margin-bottom: 10px;
+        }
+        /* FOOTER */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: auto;
+        }
+        /* MOBILE FIXES */
+        @media (max-width: 600px) {
+            .logo-container {
+                gap: 3px;
+            }
+            .letter-box {
+                width: calc((100vw - 18px) / 7);
+                height: calc(1.25 * ((100vw - 18px) / 7));
+                font-size: calc(0.042 * 100vw);
+                border-radius: 2px;
+            }
+            h2 {
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
+            .brand-label {
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span>EXECUTE</span>
-            <span>CRISPLY</span>
-        </div>
-        <p class="tagline">Build innovative products. Develop innovative businesses. Turnaround underachieving teams and businesses.</p>
-    </header>
-
-    <section id="about">
-        <h2>About Us</h2>
-        <p>We bring extensive experience in company building and software products, starting from ideation to growth stages. We create enduring software based businesses with durable competitive advantage.</p>
-    </section>
-
-    <section id="services">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Innovative Product Development: Create fast, economical, and loved software products.</li>
-            <li>Business Development: Strategies to grow enterprise value and design a virtuous flywheel.</li>
-            <li>Turnaround Services: Revitalize underachieving teams.</li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
+    <div class="brand-label">executecrisply.com</div>
+    <div class="logo-container">
+        <div class="letter-box">E</div>
+        <div class="letter-box">X</div>
+        <div class="letter-box">E</div>
+        <div class="letter-box">C</div>
+        <div class="letter-box">U</div>
+        <div class="letter-box">T</div>
+        <div class="letter-box">E</div>
+    </div>
+    <div class="logo-container">
+        <div class="letter-box">C</div>
+        <div class="letter-box">R</div>
+        <div class="letter-box">I</div>
+        <div class="letter-box">S</div>
+        <div class="letter-box">P</div>
+        <div class="letter-box">L</div>
+        <div class="letter-box">Y</div>
+    </div>
+    <h2>Build innovative products. Develop innovative businesses.</h2>
+    <p class="tagline">Turnaround underachieving teams and businesses.</p>
+    <div class="form-container">
         <form action="https://formspree.io/f/xlgredry" method="POST">
-            <div class="form-group">
+            <input type="hidden" name="_subject" value="New Inquiry for Execute Crisply">
+            <div class="input-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
             </div>
-            <div class="form-group">
+            <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" name="email" id="email" placeholder="name@company.com" required>
             </div>
-            <div class="form-group">
+            <div class="input-group">
                 <label for="message">Message</label>
-                <textarea id="message" name="How can we innovate together?" required></textarea>
+                <textarea name="message" id="message" rows="4" placeholder="How can we innovate together?" required></textarea>
             </div>
             <button type="submit">Send</button>
         </form>
+    </div>
+    <section class="content-section" id="about">
+        <h2>About Us</h2>
+        <p>We bring extensive experience in company building and software products, starting from ideation to growth stages. We create enduring software based businesses with durable competitive advantage.</p>
     </section>
-
+    <section class="content-section" id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Innovative Product Development: Create fast, economical, and loved software products.</li>
+            <li>Business Development: Strategies to grow enterprise value and establish a virtuous flywheel.</li>
+            <li>Turnaround Services: Revitalize underachieving teams.</li>
+        </ul>
+    </section>
     <footer>
         <p>&copy; 2025 Execute Crisply, LLC. All rights reserved.</p>
     </footer>
